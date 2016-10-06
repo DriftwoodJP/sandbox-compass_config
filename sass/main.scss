@@ -1,0 +1,29 @@
+$supported-browsers: ("chrome", "safari", "firefox", "ie");
+$graceful-usage-threshold: 0.1;
+$critical-usage-threshold: 0.01;
+$browser-minimum-versions: ("firefox": "33", "ie": "9");
+
+@import "compass";
+
+$debug-browser-support: true;
+@debug "$graceful-usage-threshold is:" $graceful-usage-threshold;
+@debug "$critical-usage-threshold is:" $critical-usage-threshold;
+@debug "$supported-browsers is:" $supported-browsers;
+@debug "$browser-minimum-versions is:" $browser-minimum-versions;
+
+
+.gradient {
+  @include background-image(linear-gradient(#ffffff, #f5f5f5 30%, #f5f5f5));
+}
+
+
+.test {
+  @if support-legacy-browser(ie, "7") {
+    content: 'ie7';
+  }
+  @else {
+    content: 'ie8 and higher';
+  }
+}
+.clearfix { @include clearfix; }
+.opacity { @include opacity(.5); }
